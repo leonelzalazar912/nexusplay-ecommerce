@@ -204,7 +204,6 @@ boxShadow: "0 18px 50px rgba(0,0,0,0.35), 0 0 35px rgba(106,60,230,0.18)",
   value={formData.fullName}
   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
 />
-              <input placeholder="Correo electrónico" style={inputStyle} value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
 
               <input placeholder="Teléfono" style={inputStyle} value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} />
 
