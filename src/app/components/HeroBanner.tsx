@@ -206,19 +206,7 @@ export function HeroBanner({ onGoCatalog }: HeroBannerProps) {
                 >
                   {p.label}
                 </span>
-                <span
-                  className="px-1.5 py-0.5 rounded text-xs"
-                  style={{
-                    backgroundColor: p.color + "22",
-                    color: p.color === "#003791" ? "#4a9eff" : p.color,
-                    fontFamily: "'Barlow Condensed', sans-serif",
-                    fontWeight: 700,
-                    fontSize: "0.7rem",
-                    letterSpacing: "0.05em",
-                  }}
-                >
-                  {p.badge}
-                </span>
+                
               </div>
             ))}
           </div>

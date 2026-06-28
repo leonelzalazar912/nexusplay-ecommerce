@@ -336,7 +336,7 @@ linear-gradient(180deg, #12091F 0%, #090A0F 55%, #07080C 100%)
       <h2>¡Compra realizada con éxito!</h2>
 
       <p style={{ color: "#A0A3B8" }}>
-        Tu pedido ha sido confirmado y está en camino.
+        Tu compra fue registrada con éxito. En breve validaremos el pago para comenzar su preparación.
       </p>
 
       <div style={{ ...summaryBoxStyle, textAlign: "left", marginTop: 24 }}>

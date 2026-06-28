@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Search, ShoppingCart, ChevronDown, Menu, X, Gamepad2 } from "lucide-react";
 import { allGames } from "./data";
 import type { Game } from "./ProductCard";
@@ -49,6 +49,7 @@ export function Header({
   onViewDetails
 }: HeaderProps) {
   const [query, setQuery] = useState("");
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
@@ -59,6 +60,25 @@ export function Header({
       )
       .slice(0, 6)
   : [];
+
+  const searchRef = useRef<HTMLDivElement>(null);
+
+useEffect(() => {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      searchRef.current &&
+      !searchRef.current.contains(event.target as Node)
+    ) {
+      setIsSearchOpen(false);
+    }
+  };
+
+  document.addEventListener("mousedown", handleClickOutside);
+
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, []);
 
   return (
     <header className="sticky top-0 z-50 w-full" style={{ fontFamily: "'Inter', sans-serif" }}>
@@ -94,11 +114,14 @@ export function Header({
           </a>
 
           {/* Search */}
-          <div className="flex-1 max-w-xl relative">
+          <div ref={searchRef} className="flex-1 max-w-xl relative">
             <input
               type="text"
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={(e) => {
+  setQuery(e.target.value);
+  setIsSearchOpen(true);
+}}
               onKeyDown={(e) => {
   if (e.key === "Enter" && query.trim() !== "") {
     onSearchCatalog(query.trim());
@@ -113,19 +136,20 @@ export function Header({
                 borderRadius: "4px",
                 fontSize: "0.875rem",
               }}
-              onFocus={(e) =>
-                (e.currentTarget.style.borderColor = "#6A3CE6")
-              }
-              onBlur={(e) =>
-                (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")
-              }
+              onFocus={(e) => {
+  e.currentTarget.style.borderColor = "#6A3CE6";
+  setIsSearchOpen(true);
+}}
+onBlur={(e) =>
+  (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")
+}
             />
             <Search
               size={16}
               className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"
               style={{ color: "#7a7d99" }}
             />
-            {searchResults.length > 0 && (
+            {isSearchOpen && searchResults.length > 0 && (
   <div
     style={{
       position: "absolute",
@@ -180,7 +204,7 @@ onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
     ))}
   </div>
 )}
-{query.trim() !== "" && searchResults.length === 0 && (
+{isSearchOpen && query.trim() !== "" && searchResults.length === 0 && (
   <div
     style={{
       position: "absolute",
