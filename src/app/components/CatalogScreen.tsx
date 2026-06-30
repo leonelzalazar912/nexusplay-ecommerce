@@ -461,7 +461,7 @@ fontWeight: 700,
           border: "1px solid rgba(255,255,255,0.08)",
           cursor: "pointer",
           background: selectedPlatform === platform ? "#6A3CE6" : "#161720",
-          color: selectedPlatform === platform ? "#0d0e12" : "#e8eaf0",
+          color: selectedPlatform === platform ? "#ffffff" : "#e8eaf0",
           
         }}
       >

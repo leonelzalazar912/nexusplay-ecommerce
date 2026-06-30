@@ -194,7 +194,9 @@ export function ProductCard({ game, onAddToCart, onViewDetails }: ProductCardPro
           }}
           className="mt-2 w-full flex items-center justify-center gap-2 py-2 rounded text-sm transition-all hover:opacity-90 active:scale-95"
           style={{
-            backgroundColor: "#6A3CE6",
+            backgroundColor: (game.stock ?? 0) === 0 ? "#3a3a46" : "#6A3CE6",
+            cursor: (game.stock ?? 0) === 0 ? "not-allowed" : "pointer",
+            opacity: (game.stock ?? 0) === 0 ? 0.55 : 1,
             color: "#ffffff",
             fontFamily: "'Rajdhani', sans-serif",
             fontWeight: 700,
@@ -204,7 +206,7 @@ export function ProductCard({ game, onAddToCart, onViewDetails }: ProductCardPro
           }}
         >
           <ShoppingCart size={14} strokeWidth={2.5} />
-          AGREGAR
+          {(game.stock ?? 0) === 0 ? "SIN STOCK" : "AGREGAR"}
         </button>
       </div>
     </div>

@@ -61,7 +61,7 @@ export function CartDrawer({ open, items, onClose, onRemove, onCheckout }: CartD
               className="px-2 py-0.5 rounded-full text-xs"
               style={{
                 backgroundColor: "#6A3CE6",
-                color: "#0d0e12",
+                color: "#ffffff",
                 fontWeight: 700,
               }}
             >
@@ -147,10 +147,11 @@ export function CartDrawer({ open, items, onClose, onRemove, onCheckout }: CartD
                   <div className="flex items-center justify-between mt-2">
                     <span
                       style={{
-                        color: "#6A3CE6",
+                        color: "#C4A3FF",
                         fontFamily: "'Barlow Condensed', sans-serif",
-                        fontWeight: 700,
+                        fontWeight: 800,
                         fontSize: "0.95rem",
+                        textShadow: "0 0 10px rgba(166,107,255,0.55)",
                       }}
                     >
                       ${(item.price * item.qty).toLocaleString("es-AR")} ARS
@@ -203,7 +204,7 @@ export function CartDrawer({ open, items, onClose, onRemove, onCheckout }: CartD
               className="w-full py-3 rounded transition-all hover:opacity-90 active:scale-95"
               style={{
                 backgroundColor: "#6A3CE6",
-                color: "#0d0e12",
+                color: "#ffffff",
                 fontFamily: "'Rajdhani', sans-serif",
                 fontWeight: 700,
                 fontSize: "1rem",

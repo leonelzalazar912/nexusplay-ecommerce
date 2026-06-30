@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { ProductCard } from "./ProductCard";
 import type { Game } from "./ProductCard";
-import { SlidersHorizontal } from "lucide-react";
 
 interface ProductGridProps {
   games: Game[];
@@ -13,10 +12,10 @@ interface ProductGridProps {
 
 export function ProductGrid({ games, onAddToCart, platform, onGoCatalog, onViewDetails }: ProductGridProps) {
 
-  const filtered = platform === "Todos" ? games : games.filter((g) => {
-    if (platform === "PS5" || platform === "PlayStation") return g.platform === "PS5" || g.platform === "PS4";
-    return g.platform === platform;
-  });
+  const filtered =
+  platform === "Todos"
+    ? games
+    : games.filter((g) => g.platform === platform);
 
   const sorted = [...filtered].sort((a, b) => a.id - b.id);
 

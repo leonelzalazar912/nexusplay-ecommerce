@@ -63,31 +63,22 @@ export function ConsoleCategories({ onFilter, activePlatform }: ConsoleCategoryP
 
         <div className="flex flex-wrap gap-3">
           {consoles.map((c) => {
-            const isActive =
-              activePlatform === c.name ||
-              (activePlatform === "PS5" && c.name === "PlayStation") ||
-              (activePlatform === "PS4" && c.name === "PlayStation");
+            const isActive = activePlatform === c.name;
 
             return (
               <button
                 key={c.name}
                 onClick={() =>
-                  onFilter(
-                    c.name === "Todos"
-                      ? "Todos"
-                      : c.name === "PlayStation"
-                      ? "PS5"
-                      : c.name
-                  )
-                }
+  onFilter(
+    c.name === "Todos"
+      ? "Todos"
+      : c.name
+  )
+}
                 className="flex items-center gap-3 px-6 py-4 rounded transition-all hover:scale-105 active:scale-95"
                 style={{
                   backgroundColor:
-                    activePlatform === c.name ||
-                    (activePlatform === "PS5" && c.name === "PlayStation") ||
-                    (activePlatform === "PS4" && c.name === "PlayStation")
-                      ? c.bg
-                      : "#161720",
+  isActive ? c.bg : "#161720",
                   border: `1px solid ${isActive ? c.color : "rgba(255,255,255,0.08)"}`,
                   color: isActive ? "#ffffff" : "#a0a3b8",
                 }}
