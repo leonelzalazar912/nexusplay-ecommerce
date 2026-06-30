@@ -59,6 +59,8 @@ const handleViewDetails = (game: Game) => {
   setScreen("catalog");
 };
   const addToCart = (game: Game) => {
+      if ((game.stock ?? 0) <= 0) return;
+
     setCartItems((prev) => {
       const existing = prev.find((i) => i.id === game.id);
       if (existing) {

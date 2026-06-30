@@ -132,7 +132,10 @@ export function FeaturedGames({ games, onAddToCart }: FeaturedGamesProps) {
                   </div>
 
                   <button
-                    onClick={() => onAddToCart(game)}
+                    onClick={() => {
+                      if ((game.stock ?? 0) <= 0) return;
+                        onAddToCart(game);
+                        }}
                     className="flex items-center gap-1 px-3 py-1.5 rounded transition-all hover:opacity-90 active:scale-95"
                     style={{
                       backgroundColor: "#00c8d7",
